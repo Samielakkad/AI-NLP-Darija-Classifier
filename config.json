@@ -1,0 +1,65 @@
+{
+  "model_type": "xlm-roberta",
+  "architectures": ["XLMRobertaForSequenceClassification"],
+  "base_model": "xlm-roberta-base",
+  "num_labels_trade": 12,
+  "num_labels_city": 15,
+  "num_labels_confidence": 3,
+  "hidden_size": 768,
+  "max_position_embeddings": 512,
+  "task_type": "multi-head-classification",
+  "languages": ["ar", "ar-MA", "fr", "en"],
+  "id2label_trade": {
+    "0": "plumber",
+    "1": "electrician",
+    "2": "tiler",
+    "3": "painter",
+    "4": "carpenter",
+    "5": "mason",
+    "6": "mechanic",
+    "7": "electronics",
+    "8": "ac_technician",
+    "9": "gardener",
+    "10": "cleaner",
+    "11": "mover"
+  },
+  "id2label_city": {
+    "0": "Casablanca",
+    "1": "Rabat",
+    "2": "Sale",
+    "3": "Tangier",
+    "4": "Marrakesh",
+    "5": "Agadir",
+    "6": "Fes",
+    "7": "Meknes",
+    "8": "Oujda",
+    "9": "Kenitra",
+    "10": "Tetouan",
+    "11": "Nador",
+    "12": "Beni Mellal",
+    "13": "El Jadida",
+    "14": "Mohammedia"
+  },
+  "id2label_confidence": {
+    "0": "low",
+    "1": "medium",
+    "2": "high"
+  },
+  "lora_config": {
+    "r": 16,
+    "alpha": 32,
+    "dropout": 0.05,
+    "target_modules": ["query", "value"]
+  },
+  "training_data": {
+    "source": "jak.ma production queries",
+    "period": "Oct 2025 - May 2026",
+    "size_train": 40000,
+    "size_val": 5000,
+    "size_test": 5000,
+    "pii_removed": true
+  },
+  "eval_methodology_source": "ernie-evaluation-notes (Baidu ERNIE Mentor Program 2025)",
+  "production_system": "jak.ma",
+  "license": "apache-2.0"
+}
