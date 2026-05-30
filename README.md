@@ -35,7 +35,7 @@ model-index:
       name: macro-F1
 ---
 
-# jakma-darija-classifier
+# AI + NLP · jakma-darija-classifier
 
 > Pass-1 intent + city classifier for [jak.ma](https://jak.ma) — a production Moroccan-Arabic (Darija) service marketplace. Classifies natural-language queries in Darija / Arabic / French / English / mixed-script into one of 12 trade categories and one of 15 Moroccan cities, with confidence-gated routing.
 
