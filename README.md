@@ -42,7 +42,7 @@ model-index:
 **Author:** [Sami El Akkad](https://github.com/Samielakkad) · Tsinghua SIGS, MSc Artificial Intelligence
 **Email:** sam25@mails.tsinghua.edu.cn
 **Production system:** [jak.ma](https://jak.ma) (live since Apr 2026 · ~3,400 daily queries · p50 1.18s · $0.0008/query)
-**Methodology:** [pm-frameworks-darija](https://github.com/Samielakkad/pm-frameworks-darija) · [jak-ma-eval-suite](https://github.com/Samielakkad/jak-ma-eval-suite)
+**Methodology:** [pm-frameworks-darija](https://github.com/Samielakkad/ai-product-management-frameworks) · [jak-ma-eval-suite](https://github.com/Samielakkad/ai-llm-evaluation-jakma)
 
 ---
 
@@ -86,7 +86,7 @@ out = clf("بغيت plombier f Casa daba")
 # → [{"label": "plumber/Casablanca", "score": 0.94}]
 ```
 
-In jak.ma production this is wrapped with a verifier (see [jak-ma-eval-suite/VERIFIER_SPEC.md](https://github.com/Samielakkad/jak-ma-eval-suite/blob/main/VERIFIER_SPEC.md)) — if `score < 0.6`, the system asks a clarifying question instead of routing.
+In jak.ma production this is wrapped with a verifier (see [jak-ma-eval-suite/VERIFIER_SPEC.md](https://github.com/Samielakkad/ai-llm-evaluation-jakma/blob/main/VERIFIER_SPEC.md)) — if `score < 0.6`, the system asks a clarifying question instead of routing.
 
 ## Dataset
 
@@ -105,8 +105,8 @@ The dataset is hosted separately at [`samielakkad1/jakma-darija-intents`](https:
 
 This classifier was developed using the **5-dimension evaluation rubric** from the Baidu ERNIE Mentor Program, adapted for the marketplace domain. See:
 
-- [ernie-evaluation-notes](https://github.com/Samielakkad/ernie-evaluation-notes) — the source methodology
-- [pm-frameworks-darija/evaluation-rubric.md](https://github.com/Samielakkad/pm-frameworks-darija/blob/main/evaluation-rubric.md) — the marketplace adaptation
+- [ernie-evaluation-notes](https://github.com/Samielakkad/ai-llm-evaluation-baidu-ernie) — the source methodology
+- [pm-frameworks-darija/evaluation-rubric.md](https://github.com/Samielakkad/ai-product-management-frameworks/blob/main/evaluation-rubric.md) — the marketplace adaptation
 
 **Headline metric (held-out test set):**
 - Trade classification: 92.4% accuracy, 89.1% macro-F1
@@ -125,7 +125,7 @@ This classifier was developed using the **5-dimension evaluation rubric** from t
 
 1. **Tangier and Agadir are weak** — fewer than 200 training examples each, F1 drops to ~0.78 on these cities. On roadmap to fix via active sampling.
 2. **Handyman / "shi haja" queries** — the model deliberately routes ambiguous queries to `confidence: low` rather than guessing. This is by design (it pairs with a verifier downstream) but means raw accuracy on the "general repair" intent class looks artificially low.
-3. **Salé / Rabat adjacency** — these two cities are 5km apart across a river and the model can flip between them on commuter queries. An adjacency post-processor handles this in production (see [jak-ma-eval-suite/adjacency.py](https://github.com/Samielakkad/jak-ma-eval-suite)).
+3. **Salé / Rabat adjacency** — these two cities are 5km apart across a river and the model can flip between them on commuter queries. An adjacency post-processor handles this in production (see [jak-ma-eval-suite/adjacency.py](https://github.com/Samielakkad/ai-llm-evaluation-jakma)).
 4. **Concept drift** — pricing-sensitive trade labels (e.g. AC technician) drift seasonally. Model is retrained quarterly. Last retrain: May 2026.
 5. **Not a chat model** — this is *classification only*. The Darija chat experience uses this as Pass 1, with a separate Pass 2 generator + verifier.
 
@@ -150,10 +150,10 @@ This classifier was developed using the **5-dimension evaluation rubric** from t
 ## Related artifacts
 
 - 🤗 [jakma-darija-chat Space](https://huggingface.co/spaces/samielakkad1/jakma-darija-chat) — interactive demo wrapping this classifier + Pass 2 generator
-- 📐 [pm-frameworks-darija](https://github.com/Samielakkad/pm-frameworks-darija) — the 5-file PM/eval methodology
-- 📊 [jak-ma-eval-suite](https://github.com/Samielakkad/jak-ma-eval-suite) — verifier spec + benchmark prompts
-- 📝 [jak-ma-case-study](https://github.com/Samielakkad/jak-ma-case-study) — production case study
-- 🎓 [Methodology origin · ernie-evaluation-notes](https://github.com/Samielakkad/ernie-evaluation-notes) — Baidu ERNIE Mentor Program methodology this classifier inherits from
+- 📐 [pm-frameworks-darija](https://github.com/Samielakkad/ai-product-management-frameworks) — the 5-file PM/eval methodology
+- 📊 [jak-ma-eval-suite](https://github.com/Samielakkad/ai-llm-evaluation-jakma) — verifier spec + benchmark prompts
+- 📝 [jak-ma-case-study](https://github.com/Samielakkad/ai-product-jakma-case-study) — production case study
+- 🎓 [Methodology origin · ernie-evaluation-notes](https://github.com/Samielakkad/ai-llm-evaluation-baidu-ernie) — Baidu ERNIE Mentor Program methodology this classifier inherits from
 - 🌐 [Portfolio](https://samielakkad.github.io)
 
 ## License
