@@ -163,3 +163,8 @@ Apache 2.0 (model) · CC-BY-4.0 (model card text) · Underlying dataset CC-BY-4.
 ---
 
 *Built with the 5-criteria eval rubric originally designed at DOPEDCLUB (Casablanca), formalised during the Baidu ERNIE Mentor Program (Shenzhen), now running in production at jak.ma (Morocco). Same disagreement-based verifier reasoning applied at runtime.*
+
+
+---
+
+**License — All rights reserved.** This repository is shared for review only. Please **contact me before using any part of it** for any purpose. See [LICENSE](LICENSE).
